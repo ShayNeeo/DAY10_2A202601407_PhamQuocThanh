@@ -37,6 +37,18 @@
       "affected_ids": [
         "10.1007_s10278-026-02086-9"
       ]
+    },
+    {
+      "corruption_type": "entity_swap",
+      "affected_ids": [
+        "10.1007_s10278-026-02086-9"
+      ]
+    },
+    {
+      "corruption_type": "metadata_scramble",
+      "affected_ids": [
+        "10.21203_rs.3.rs-10178277_v1"
+      ]
     }
   ],
   "total_corrupted_rows": 23

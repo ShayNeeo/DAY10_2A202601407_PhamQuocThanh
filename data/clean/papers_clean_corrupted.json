@@ -2,7 +2,7 @@
   {
     "paper_id": "10.1007_s10278-026-02086-9",
     "title": "JADE-Plus: A Multimodal Agentic Retrieval-Augmented Generation Large Language Framework for Diagnostic Support in Jawbone Lesions: Development and Technical Validation Study",
-    "summary": "",
+    "summary": "[ENTITY_SWAPPED_FACT] ",
     "authors": "['Soroush Baseri Saadi', 'Jonas Ver Berne', 'Rocharles Cavalcante Fontenele', 'Peter Claes', 'Reinhilde Jacobs']",
     "categories": "['General']",
     "primary_category": "General",
@@ -13,9 +13,9 @@
     "comment": NaN,
     "authors_joined": "Soroush Baseri Saadi, Jonas Ver Berne, Rocharles Cavalcante Fontenele, Peter Claes, Reinhilde Jacobs",
     "categories_joined": "General",
-    "summary_chars": 0,
+    "summary_chars": 22,
     "age_days": 2000,
-    "text_for_embedding": "Title: JADE-Plus: A Multimodal Agentic Retrieval-Augmented Generation Large Language Framework for Diagnostic Support in Jawbone Lesions: Development and Technical Validation Study\nAuthors: Soroush Baseri Saadi, Jonas Ver Berne, Rocharles Cavalcante Fontenele, Peter Claes, Reinhilde Jacobs\nCategories: General\nSummary: "
+    "text_for_embedding": "Title: JADE-Plus: A Multimodal Agentic Retrieval-Augmented Generation Large Language Framework for Diagnostic Support in Jawbone Lesions: Development and Technical Validation Study\nAuthors: Soroush Baseri Saadi, Jonas Ver Berne, Rocharles Cavalcante Fontenele, Peter Claes, Reinhilde Jacobs\nCategories: General\nSummary: [ENTITY_SWAPPED_FACT] "
   },
   {
     "paper_id": "10.21203_rs.3.rs-10178277_v1",
@@ -29,11 +29,11 @@
     "abs_url": "https://doi.org/10.21203/rs.3.rs-10178277/v1",
     "pdf_url": "https://doi.org/10.21203/rs.3.rs-10178277/v1",
     "comment": NaN,
-    "authors_joined": "Novanto Yudistira, Yanuar Putra Kharisma Adhiyasa",
+    "authors_joined": "Yanuar Putra Kharisma Adhiyasa, Novanto Yudistira, UNKNOWN_AUTHOR_CORRUPTED",
     "categories_joined": "General",
     "summary_chars": 115,
     "age_days": 27,
-    "text_for_embedding": "Title: Retrieval-Augmented Large-Language-Model-Based Time-Series Forecasting for Cross-Market Equity Analysis\nAuthors: Novanto Yudistira, Yanuar Putra Kharisma Adhiyasa\nCategories: General\nSummary: NOISE_STRING_CORRUPTED NOISE_STRING_CORRUPTED NOISE_STRING_CORRUPTED NOISE_STRING_CORRUPTED NOISE_STRING_CORRUPTED "
+    "text_for_embedding": "Title: Retrieval-Augmented Large-Language-Model-Based Time-Series Forecasting for Cross-Market Equity Analysis\nAuthors: Yanuar Putra Kharisma Adhiyasa, Novanto Yudistira, UNKNOWN_AUTHOR_CORRUPTED\nCategories: General\nSummary: NOISE_STRING_CORRUPTED NOISE_STRING_CORRUPTED NOISE_STRING_CORRUPTED NOISE_STRING_CORRUPTED NOISE_STRING_CORRUPTED "
   },
   {
     "paper_id": "10.2196_preprints.106157",
