@@ -7,7 +7,7 @@
 | Họ và tên          | Phạm Quốc Thành                                                                             |
 | MSSV               | 2A202601407                                                                                 |
 | Khóa/Lớp           | K3 — AI20K                                                                                  |
-| Tên nhóm           | Nhóm 10 — Data Pipeline & Data Observability                                                |
+| Tên nhóm           | A1                                                                                          |
 | Vai trò chính      | Role 1 (Pipeline Integrator) & Role 4 (Evaluation & Observability Owner)                   |
 | Repository         | [Muscar1a/K3_Day10_Data-Pipeline-Data-Observability](https://github.com/Muscar1a/K3_Day10_Data-Pipeline-Data-Observability.git) |
 | Ngày hoàn thành    | 2026-08-06                                                                                  |
