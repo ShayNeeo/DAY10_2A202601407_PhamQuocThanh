@@ -22,3 +22,11 @@ class MiniLMEmbeddings(Embeddings):
     def embed_query(self, text: str) -> list[float]:
         embedding = self.model.encode([text], normalize_embeddings=True)
         return embedding[0].tolist()
+
+
+def build_embeddings(model_name: str, google_api_key: str | None = None) -> Embeddings:
+    if "gecko" in model_name or "text-embedding" in model_name or "gemini" in model_name:
+        from langchain_google_genai import GoogleGenerativeAIEmbeddings
+        return GoogleGenerativeAIEmbeddings(model=model_name, google_api_key=google_api_key)
+    return MiniLMEmbeddings(model_name)
+
