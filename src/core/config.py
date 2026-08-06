@@ -76,6 +76,17 @@ def load_settings(project_dir: Path | None = None) -> Settings:
     load_dotenv(workspace / ".env")
     load_dotenv(root / ".env", override=False)
 
+    # Configure HuggingFace token if present
+    hf_token = os.getenv("HF_TOKEN")
+    if hf_token:
+        os.environ["HF_TOKEN"] = hf_token
+        os.environ["HUGGING_FACE_HUB_TOKEN"] = hf_token
+
+    # Silence LangSmith 403 errors if key is a placeholder
+    langchain_key = os.getenv("LANGCHAIN_API_KEY", "")
+    if not langchain_key or "your-langsmith-key" in langchain_key or langchain_key.startswith("your_"):
+        os.environ["LANGCHAIN_TRACING_V2"] = "false"
+
     data_dir = root / "data"
     paths = Paths(
         project_dir=root,
@@ -108,10 +119,26 @@ def load_settings(project_dir: Path | None = None) -> Settings:
         comparison_report=data_dir / "reports" / "corruption_report.md",
     )
 
+    provider = os.getenv("LLM_PROVIDER")
+    if not provider:
+        if os.getenv("OPENROUTER_API_KEY"):
+            provider = "openrouter"
+        elif os.getenv("GOOGLE_API_KEY") or os.getenv("AI_STUDIO_API_KEY"):
+            provider = "gemini"
+        else:
+            provider = "gemini"
+
+    model_name = (
+        os.getenv("LLM_MODEL")
+        or (os.getenv("OPENROUTER_MODEL") if provider == "openrouter" else None)
+        or os.getenv("AI_MODEL")
+        or "gemini-2.5-flash"
+    )
+
     return Settings(
-        llm_provider=os.getenv("LLM_PROVIDER", "gemini"),
-        model_name=os.getenv("LLM_MODEL", "gemini-2.5-flash"),
-        google_api_key=os.getenv("GOOGLE_API_KEY"),
+        llm_provider=provider,
+        model_name=model_name,
+        google_api_key=os.getenv("GOOGLE_API_KEY") or os.getenv("AI_STUDIO_API_KEY"),
         openai_api_key=os.getenv("OPENAI_API_KEY"),
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
         openrouter_api_key=os.getenv("OPENROUTER_API_KEY"),

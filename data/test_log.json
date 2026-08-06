@@ -1,0 +1,35 @@
+{
+  "corruptions": [
+    {
+      "corruption_type": "blank_summary",
+      "affected_ids": [
+        "1"
+      ]
+    },
+    {
+      "corruption_type": "stale_date",
+      "affected_ids": [
+        "1"
+      ]
+    },
+    {
+      "corruption_type": "add_duplicate",
+      "affected_ids": [
+        "1"
+      ]
+    },
+    {
+      "corruption_type": "entity_swap",
+      "affected_ids": [
+        "1"
+      ]
+    },
+    {
+      "corruption_type": "metadata_scramble",
+      "affected_ids": [
+        "1"
+      ]
+    }
+  ],
+  "total_corrupted_rows": 2
+}

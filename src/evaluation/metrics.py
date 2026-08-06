@@ -71,8 +71,8 @@ Return:
 
 
 def _run_ragas(settings: Settings, answers: list[dict[str, Any]]) -> dict[str, Any]:
-    if os.getenv("RUN_RAGAS", "").lower() not in {"1", "true", "yes"}:
-        return {"skipped": "Set RUN_RAGAS=1 to enable the slower Ragas pass."}
+    if os.getenv("RUN_RAGAS", "1").lower() in {"0", "false", "no"}:
+        return {"skipped": "Ragas execution disabled via RUN_RAGAS=0."}
     try:
         if "langchain_community.chat_models.vertexai" not in sys.modules:
             shim = types.ModuleType("langchain_community.chat_models.vertexai")
@@ -137,7 +137,13 @@ def evaluate_pipeline(
         "judge_accuracy": mean(1.0 if item["judge"]["correct"] else 0.0 for item in answers),
         "mean_judge_score": mean(item["judge"]["score"] for item in answers),
     }
-    summary["ragas"] = _run_ragas(settings, answers)
+    ragas_res = _run_ragas(settings, answers)
+    summary["ragas"] = ragas_res
+    if isinstance(ragas_res, dict) and "error" not in ragas_res and "skipped" not in ragas_res:
+        summary["ragas_faithfulness"] = float(ragas_res.get("faithfulness", 0.0))
+        summary["ragas_answer_relevancy"] = float(ragas_res.get("answer_relevancy", 0.0))
+        summary["ragas_context_precision"] = float(ragas_res.get("context_precision", 0.0))
+        summary["ragas_context_recall"] = float(ragas_res.get("context_recall", 0.0))
 
     bundle = EvaluationBundle(summary=summary, answers=answers)
     write_json(metrics_output_path, summary)
