@@ -2,17 +2,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from statistics import mean
-import os
-import sys
-import types
 from typing import Any
 
-from datasets import Dataset
 from pydantic import BaseModel, Field
 
 from core.config import Settings
 from core.utils import normalize_whitespace, read_json, write_json
-from retrieval.embeddings import build_embeddings
 from retrieval.index import LocalEmbeddingIndex
 from retrieval.llm import build_llm
 from retrieval.qa import answer_question
@@ -70,35 +65,6 @@ Return:
         )
 
 
-def _run_ragas(settings: Settings, answers: list[dict[str, Any]]) -> dict[str, Any]:
-    if os.getenv("RUN_RAGAS", "1").lower() in {"0", "false", "no"}:
-        return {"skipped": "Ragas execution disabled via RUN_RAGAS=0."}
-    try:
-        if "langchain_community.chat_models.vertexai" not in sys.modules:
-            shim = types.ModuleType("langchain_community.chat_models.vertexai")
-            shim.ChatVertexAI = type("ChatVertexAI", (), {})
-            sys.modules["langchain_community.chat_models.vertexai"] = shim
-        from ragas import evaluate
-        from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
-
-        dataset = Dataset.from_dict(
-            {
-                "question": [item["question"] for item in answers],
-                "answer": [item["answer"] for item in answers],
-                "ground_truth": [item["ground_truth"] for item in answers],
-                "contexts": [item["retrieved_contexts"] for item in answers],
-            }
-        )
-        result = evaluate(
-            dataset,
-            metrics=[answer_relevancy, context_precision, context_recall, faithfulness],
-            llm=build_llm(settings=settings, temperature=0.0),
-            embeddings=build_embeddings(settings.embedding_model, settings.google_api_key),
-        )
-        return dict(result)
-    except Exception as exc:  # pragma: no cover
-        return {"error": f"Ragas evaluation failed: {exc}"}
-
 
 def evaluate_pipeline(
     settings: Settings,
@@ -139,14 +105,6 @@ def evaluate_pipeline(
         "judge_accuracy": mean(1.0 if item["judge"]["correct"] else 0.0 for item in answers),
         "mean_judge_score": mean(item["judge"]["score"] for item in answers),
     }
-    ragas_res = _run_ragas(settings, answers)
-    summary["ragas"] = ragas_res
-    if isinstance(ragas_res, dict) and "error" not in ragas_res and "skipped" not in ragas_res:
-        summary["ragas_faithfulness"] = float(ragas_res.get("faithfulness", 0.0))
-        summary["ragas_answer_relevancy"] = float(ragas_res.get("answer_relevancy", 0.0))
-        summary["ragas_context_precision"] = float(ragas_res.get("context_precision", 0.0))
-        summary["ragas_context_recall"] = float(ragas_res.get("context_recall", 0.0))
-
     bundle = EvaluationBundle(summary=summary, answers=answers)
     write_json(metrics_output_path, summary)
     write_json(answers_output_path, answers)

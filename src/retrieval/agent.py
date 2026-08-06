@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from typing import Any
 
 from langchain.tools import tool
@@ -37,7 +38,12 @@ def build_agent(settings: Settings, index: LocalEmbeddingIndex):
             f"{record['content']}"
         )
 
-    llm = build_llm(settings=settings, temperature=0.0)
+    agent_model = os.getenv("AGENT_MODEL")
+    if agent_model:
+        from langchain_google_genai import ChatGoogleGenerativeAI
+        llm = ChatGoogleGenerativeAI(model=agent_model, google_api_key=settings.google_api_key, temperature=0.0)
+    else:
+        llm = build_llm(settings=settings, temperature=0.0)
     return create_react_agent(
         model=llm,
         tools=[semantic_search_papers, lookup_paper],
