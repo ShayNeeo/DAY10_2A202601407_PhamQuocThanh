@@ -1,0 +1,18 @@
+{
+  "report_name": "corrupt_test",
+  "passed": false,
+  "total_rows": 1,
+  "null_paper_ids": 0,
+  "duplicate_paper_ids": 0,
+  "null_titles": 1,
+  "short_summaries": 1,
+  "stale_rows": 1,
+  "checks": {
+    "row_count_check": false,
+    "paper_id_not_null": true,
+    "paper_id_unique": true,
+    "title_not_null": false,
+    "summary_length_check": false,
+    "freshness_check": false
+  }
+}

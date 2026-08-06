@@ -1,0 +1,43 @@
+{
+  "corruptions": [
+    {
+      "corruption_type": "drop_latest_records",
+      "affected_ids": [
+        "10.2118_234689-pa",
+        "10.1111_exsy.70341"
+      ],
+      "count": 2
+    },
+    {
+      "corruption_type": "blank_summary",
+      "affected_ids": [
+        "10.1007_s10278-026-02086-9"
+      ]
+    },
+    {
+      "corruption_type": "inject_noise",
+      "affected_ids": [
+        "10.21203_rs.3.rs-10178277_v1"
+      ]
+    },
+    {
+      "corruption_type": "truncate_title",
+      "affected_ids": [
+        "10.2196_preprints.106157"
+      ]
+    },
+    {
+      "corruption_type": "stale_date",
+      "affected_ids": [
+        "10.1007_s10278-026-02086-9"
+      ]
+    },
+    {
+      "corruption_type": "add_duplicate",
+      "affected_ids": [
+        "10.1007_s10278-026-02086-9"
+      ]
+    }
+  ],
+  "total_corrupted_rows": 23
+}
