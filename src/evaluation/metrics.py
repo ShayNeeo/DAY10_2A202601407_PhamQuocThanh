@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 
 from core.config import Settings
 from core.utils import normalize_whitespace, read_json, write_json
-from retrieval.embeddings import MiniLMEmbeddings
+from retrieval.embeddings import build_embeddings
 from retrieval.index import LocalEmbeddingIndex
 from retrieval.llm import build_llm
 from retrieval.qa import answer_question
@@ -93,7 +93,7 @@ def _run_ragas(settings: Settings, answers: list[dict[str, Any]]) -> dict[str, A
             dataset,
             metrics=[answer_relevancy, context_precision, context_recall, faithfulness],
             llm=build_llm(settings=settings, temperature=0.0),
-            embeddings=MiniLMEmbeddings(settings.embedding_model),
+            embeddings=build_embeddings(settings.embedding_model, settings.google_api_key),
         )
         return dict(result)
     except Exception as exc:  # pragma: no cover
@@ -109,8 +109,10 @@ def evaluate_pipeline(
 ) -> EvaluationBundle:
     test_set = read_json(test_set_path)
     answers: list[dict[str, Any]] = []
+    total = len(test_set)
 
-    for item in test_set:
+    for i, item in enumerate(test_set, 1):
+        print(f"  [eval] {i}/{total} — {item['question_type']}: {item['question'][:60]}...")
         result = answer_question(item["question"], settings=settings, index=index)
         judge = _judge_answer(settings, item["question"], item["ground_truth"], result.answer)
         retrieval_hit = any(doc_id in item["ground_truth_doc_ids"] for doc_id in result.retrieved_doc_ids)

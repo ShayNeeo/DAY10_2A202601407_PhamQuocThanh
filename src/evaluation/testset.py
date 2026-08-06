@@ -21,9 +21,9 @@ def build_test_set(df: pd.DataFrame, output_path) -> list[dict[str, Any]]:
         paper_id = str(row.get("paper_id", ""))
         title = str(row.get("title", ""))
         summary = str(row.get("summary", ""))
-        authors = str(row.get("authors", ""))
+        authors = str(row.get("authors_joined", ""))
         published = str(row.get("published", ""))
-        categories = str(row.get("categories", ""))
+        categories = str(row.get("categories_joined", ""))
 
         if not paper_id or not title:
             continue
