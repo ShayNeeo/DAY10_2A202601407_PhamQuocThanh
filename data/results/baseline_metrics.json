@@ -1,10 +1,7 @@
 {
   "samples": 72,
   "retrieval_hit_rate": 1.0,
-  "mean_token_f1": 0.4234936342550967,
-  "judge_accuracy": 0.3888888888888889,
-  "mean_judge_score": 2.6527777777777777,
-  "ragas": {
-    "error": "Ragas evaluation failed: 0"
-  }
+  "mean_token_f1": 0.9861111111111112,
+  "judge_accuracy": 0.9861111111111112,
+  "mean_judge_score": 4.944444444444445
 }

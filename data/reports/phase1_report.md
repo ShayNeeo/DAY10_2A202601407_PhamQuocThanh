@@ -8,9 +8,9 @@
 ## 2. Evaluation Metrics (Baseline)
 - **Samples Evaluated**: 72
 - **Retrieval Hit Rate**: 100.00%
-- **Mean Token F1**: 0.4235
-- **LLM Judge Accuracy**: 38.89%
-- **Mean Judge Score (1-5)**: 2.65
+- **Mean Token F1**: 0.9861
+- **LLM Judge Accuracy**: 98.61%
+- **Mean Judge Score (1-5)**: 4.94
 - **Ragas Faithfulness**: 0.0000
 - **Ragas Answer Relevancy**: 0.0000
 - **Ragas Context Precision**: 0.0000
