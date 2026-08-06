@@ -47,6 +47,56 @@ def generate_phase1_report(
     write_text(out_p, content)
 
 
+def _generate_comparison_chart(
+    img_path: Path,
+    baseline_metrics: dict[str, Any],
+    corrupted_metrics: dict[str, Any],
+    repaired_metrics: dict[str, Any],
+) -> None:
+    """Generate a grouped bar chart comparing key metrics across Baseline, Corrupted, and Repaired states."""
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+
+        metric_keys = [
+            ("Hit Rate", "retrieval_hit_rate"),
+            ("Token F1", "mean_token_f1"),
+            ("Faithfulness", "ragas_faithfulness"),
+            ("Relevancy", "ragas_answer_relevancy"),
+            ("Context Prec.", "ragas_context_precision"),
+            ("Context Rec.", "ragas_context_recall"),
+        ]
+
+        labels = [m[0] for m in metric_keys]
+        b_vals = [baseline_metrics.get(m[1], 0.0) for m in metric_keys]
+        c_vals = [corrupted_metrics.get(m[1], 0.0) for m in metric_keys]
+        r_vals = [repaired_metrics.get(m[1], 0.0) for m in metric_keys]
+
+        x = range(len(labels))
+        width = 0.25
+
+        fig, ax = plt.subplots(figsize=(10, 5))
+        ax.bar([i - width for i in x], b_vals, width, label="Baseline", color="#3b82f6")
+        ax.bar(x, c_vals, width, label="Corrupted", color="#ef4444")
+        ax.bar([i + width for i in x], r_vals, width, label="Repaired", color="#10b981")
+
+        ax.set_ylabel("Score / Rate")
+        ax.set_title("Data Pipeline Metrics Comparison: Baseline vs Corrupted vs Repaired")
+        ax.set_xticks(list(x))
+        ax.set_xticklabels(labels, rotation=15)
+        ax.set_ylim(0, 1.1)
+        ax.legend()
+        ax.grid(axis="y", linestyle="--", alpha=0.5)
+
+        plt.tight_layout()
+        img_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(img_path, dpi=150)
+        plt.close()
+    except Exception as exc:
+        print(f"Could not generate chart: {exc}")
+
+
 def generate_corruption_report(
     report_path,
     baseline_metrics: dict[str, Any],
@@ -58,6 +108,10 @@ def generate_corruption_report(
     repaired_freshness: dict[str, Any],
 ) -> None:
     """Generate Markdown comparison report for Baseline vs. Corrupted vs. Repaired flows."""
+    out_p = Path(report_path)
+    img_path = out_p.parent / "metrics_comparison.png"
+    _generate_comparison_chart(img_path, baseline_metrics, corrupted_metrics, repaired_metrics)
+
     b_hit = baseline_metrics.get("retrieval_hit_rate", 0.0)
     c_hit = corrupted_metrics.get("retrieval_hit_rate", 0.0)
     r_hit = repaired_metrics.get("retrieval_hit_rate", 0.0)
@@ -87,6 +141,9 @@ def generate_corruption_report(
     r_c_rec = repaired_metrics.get("ragas_context_recall", 0.0)
 
     content = f"""# Data Quality Impact & Recovery Report
+
+## Visual Metrics Comparison
+![Metrics Comparison](metrics_comparison.png)
 
 ## 1. Metrics Comparison Overview
 
@@ -119,6 +176,6 @@ def generate_corruption_report(
 - Automated Data Quality and Freshness checks successfully flagged anomalies prior to downstream consumption.
 - Re-executing ETL cleaning pipeline from immutable raw JSON sources fully restored pipeline accuracy to baseline levels.
 """
-    out_p = Path(report_path)
     out_p.parent.mkdir(parents=True, exist_ok=True)
     write_text(out_p, content)
+
