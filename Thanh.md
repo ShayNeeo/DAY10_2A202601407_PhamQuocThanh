@@ -2,7 +2,7 @@
 
 **Author:** Pham Quoc Thanh  
 **Student ID:** 2A202601407  
-**Team:** Nhóm 10 — Data Pipeline & Data Observability  
+**Team:** A1  
 **Team Members & Roles:**
 - **Phạm Quốc Thành (2A202601407):** Role 1 (Data Ingestion & Synthetic Corruption) & Role 4 (Data Observability, RAGAS Evaluation, CLI & Pipeline Orchestration)
 - **Nguyễn Thành An (2A202601017):** Role 2 (Data Cleaning & Preprocessing)

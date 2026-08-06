@@ -5,7 +5,7 @@
 | Thông tin         | Nội dung                                                                                    |
 | ------------------ | ------------------------------------------------------------------------------------------- |
 | Khóa/Lớp         | K3 — AI20K                                                                                  |
-| Tên nhóm         | Nhóm 10 — Data Pipeline & Data Observability                                                |
+| Tên nhóm         | A1                                                                                          |
 | Repository         | [Muscar1a/K3_Day10_Data-Pipeline-Data-Observability](https://github.com/Muscar1a/K3_Day10_Data-Pipeline-Data-Observability.git) |
 | Ngày hoàn thành | 2026-08-06                                                                                  |
 
