@@ -1,7 +1,7 @@
 {
   "backend": "chroma",
-  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
-  "persist_path": "/home/shayneeo/Downloads/Documents/Coding/AI_in_Action/Day_11/Morning/DAY10_2A202601407_PhamQuocThanh/data/chroma",
+  "embedding_model": "all-MiniLM-L6-v2",
+  "persist_path": "E:\\AI\\Lab\\K3_Day10_Data-Pipeline-Data-Observability\\data\\chroma",
   "collection_name": "papers-baseline",
   "documents": [
     {

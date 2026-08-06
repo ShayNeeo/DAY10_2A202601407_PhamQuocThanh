@@ -1,6 +1,15 @@
 [
   {
     "question": "What is the main topic of these papers?",
-    "answer": "I'd be happy to help identify the main topic of the papers, but I need a bit more information from you first. Could you please provide:\n\n1. The specific paper IDs or titles you'd like me to analyze, or\n2. A brief description of the papers you're referring to\n\nOnce you share these details, I can look up the papers and determine their main topic for you."
+    "answer": [
+      {
+        "type": "thinking",
+        "thinking": "The user is asking for the \"main topic of these papers\". However, the user has not provided any papers or a list of papers. I cannot answer this question without knowing which papers they are referring to.\n\nI should ask the user to provide the papers or a list of titles/IDs so I can analyze them.\n\nWait, looking at the prompt, there are no papers provided in the context. I should check if there's any implicit context or if I should ask for clarification.\n\nActually, I don't have any papers to look at. I'll ask the user to provide the papers or the list of papers they are referring to."
+      },
+      {
+        "type": "text",
+        "text": "Please provide the papers or a list of their titles/IDs so I can analyze them and determine their main topic."
+      }
+    ]
   }
 ]

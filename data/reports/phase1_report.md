@@ -6,11 +6,15 @@
 - **Cleaned Records Count**: 24
 
 ## 2. Evaluation Metrics (Baseline)
-- **Samples Evaluated**: 96
+- **Samples Evaluated**: 72
 - **Retrieval Hit Rate**: 100.00%
-- **Mean Token F1**: 0.3176
-- **LLM Judge Accuracy**: 26.04%
-- **Mean Judge Score (1-5)**: 2.02
+- **Mean Token F1**: 0.4235
+- **LLM Judge Accuracy**: 38.89%
+- **Mean Judge Score (1-5)**: 2.65
+- **Ragas Faithfulness**: 0.0000
+- **Ragas Answer Relevancy**: 0.0000
+- **Ragas Context Precision**: 0.0000
+- **Ragas Context Recall**: 0.0000
 
 ## 3. Data Quality & Freshness Observability
 - **Quality Checks Passed**: True
