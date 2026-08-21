@@ -4,7 +4,7 @@
 
 | Thông tin         | Nội dung                                                                                    |
 | ------------------ | ------------------------------------------------------------------------------------------- |
-| Họ và tên       | Phạm Quốc Thành                                                                             |
+| Họ và tên       | Phạm Quốc Thanh                                                                             |
 | MSSV               | 2A202601407                                                                                 |
 | Khóa/Lớp         | K3 — AI20K                                                                                  |
 | Tên nhóm         | A1                                                                                          |
@@ -66,5 +66,5 @@
 - [x] Đã đối chiếu số liệu thực tế từ các file trong `data/results/` và `data/reports/`.
 - [x] Báo cáo không chứa `.env`, API key hay bất kỳ thông tin nhạy cảm nào.
 
-**Họ và tên:** Phạm Quốc Thành  
+**Họ và tên:** Phạm Quốc Thanh  
 **Ngày xác nhận:** 2026-08-06

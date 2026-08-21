@@ -4,7 +4,7 @@
 **Student ID:** 2A202601407  
 **Team:** A1  
 **Team Members & Roles:**
-- **Phạm Quốc Thành (2A202601407):** Role 1 (Data Ingestion & Synthetic Corruption) & Role 4 (Data Observability, RAGAS Evaluation, CLI & Pipeline Orchestration)
+- **Phạm Quốc Thanh (2A202601407):** Role 1 (Data Ingestion & Synthetic Corruption) & Role 4 (Data Observability, RAGAS Evaluation, CLI & Pipeline Orchestration)
 - **Nguyễn Thành An (2A202601017):** Role 2 (Data Cleaning & Preprocessing)
 - **Vũ Quang Nhật (2A202602038):** Role 3 (Vector Store & Retrieval Engine)
 

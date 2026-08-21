@@ -13,7 +13,7 @@
 
 | STT | Họ và tên | MSSV | Vai trò chính | Module/deliverable sở hữu |
 | --: | --- | --- | --- | --- |
-| 1 | Phạm Quốc Thành | 2A202601407 | Role 1 & Role 4 Owner (Ingestion, Corruption, Observability, Orchestration & CLI) | `src/ingestion/crossref.py`, `src/ingestion/corruption.py`, `src/observability/quality.py`, `src/observability/reporting.py`, `src/pipelines/phase1.py`, `src/pipelines/corruption_flow.py`, `script/cli.py`, `tests/` |
+| 1 | Phạm Quốc Thanh | 2A202601407 | Role 1 & Role 4 Owner (Ingestion, Corruption, Observability, Orchestration & CLI) | `src/ingestion/crossref.py`, `src/ingestion/corruption.py`, `src/observability/quality.py`, `src/observability/reporting.py`, `src/pipelines/phase1.py`, `src/pipelines/corruption_flow.py`, `script/cli.py`, `tests/` |
 | 2 | Nguyễn Thành An | 2A202601017 | Role 2 Owner (Data Cleaning & Preprocessing) | `src/ingestion/cleaning.py` |
 | 3 | Vũ Quang Nhật | 2A202602038 | Role 3 Owner (Vector Store & Retrieval Engine) | `src/retrieval/embeddings.py`, `src/retrieval/index.py`, `src/retrieval/agent.py` |
 

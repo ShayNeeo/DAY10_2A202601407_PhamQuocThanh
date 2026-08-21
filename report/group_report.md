@@ -13,7 +13,7 @@
 
 | STT | Họ và tên | MSSV | Vai trò chính | Module/deliverable sở hữu |
 | --: | --- | --- | --- | --- |
-| 1 | Phạm Quốc Thành | 2A202601407 | Role 1 & Role 4 Owner (Ingestion, Corruption, Observability, Orchestration & CLI) | `src/ingestion/crossref.py`, `src/ingestion/corruption.py`, `src/observability/quality.py`, `src/observability/reporting.py`, `src/pipelines/phase1.py`, `src/pipelines/corruption_flow.py`, `script/cli.py`, `tests/` |
+| 1 | Phạm Quốc Thanh | 2A202601407 | Role 1 & Role 4 Owner (Ingestion, Corruption, Observability, Orchestration & CLI) | `src/ingestion/crossref.py`, `src/ingestion/corruption.py`, `src/observability/quality.py`, `src/observability/reporting.py`, `src/pipelines/phase1.py`, `src/pipelines/corruption_flow.py`, `script/cli.py`, `tests/` |
 | 2 | Nguyễn Thành An | 2A202601017 | Role 2 Owner (Data Cleaning & Preprocessing) | `src/ingestion/cleaning.py` |
 | 3 | Vũ Quang Nhật | 2A202602038 | Role 3 Owner (Vector Store & Retrieval Engine) | `src/retrieval/embeddings.py`, `src/retrieval/index.py`, `src/retrieval/agent.py` |
 
@@ -52,13 +52,13 @@ Crossref REST API
 
 | Khối | Input | Xử lý chính | Output/artifact | Owner |
 | --- | --- | --- | --- | --- |
-| Ingestion & Raw | Crossref API | Fetch REST, retry backoff, parse payload | `data/raw/crossref_records.json` | Phạm Quốc Thành |
+| Ingestion & Raw | Crossref API | Fetch REST, retry backoff, parse payload | `data/raw/crossref_records.json` | Phạm Quốc Thanh |
 | Data Cleaning | Raw records | Clean HTML, build `text_for_embedding`, `age_days` | `data/clean/papers_clean.csv` | Nguyễn Thành An |
 | Vector Index & Retrieval | Clean CSV | `MiniLMEmbeddings`, ChromaDB, LangGraph Agent | `data/chroma/`, `embeddings.json` | Vũ Quang Nhật |
-| Evaluation Set & Metrics | Clean CSV | Q&A generation, Token F1, LLM Judge, Ragas | `data/eval/test_set.json`, `baseline_metrics.json` | Phạm Quốc Thành |
-| Data Observability | Clean/Corrupt DF | 6 Data Quality rules, Freshness Monitoring | `data/quality/`, `freshness_report.json` | Phạm Quốc Thành |
-| Corruption & Self-Healing | Clean CSV & Raw JSON | Inject synthetic errors, re-run ETL from Raw | `corruption_log.json`, `repaired_clean.csv` | Phạm Quốc Thành |
-| Pipeline Orchestration & CLI | All modules | End-to-end CLI (`cli.py`), chart generation | `script/cli.py`, `corruption_report.md` | Phạm Quốc Thành |
+| Evaluation Set & Metrics | Clean CSV | Q&A generation, Token F1, LLM Judge, Ragas | `data/eval/test_set.json`, `baseline_metrics.json` | Phạm Quốc Thanh |
+| Data Observability | Clean/Corrupt DF | 6 Data Quality rules, Freshness Monitoring | `data/quality/`, `freshness_report.json` | Phạm Quốc Thanh |
+| Corruption & Self-Healing | Clean CSV & Raw JSON | Inject synthetic errors, re-run ETL from Raw | `corruption_log.json`, `repaired_clean.csv` | Phạm Quốc Thanh |
+| Pipeline Orchestration & CLI | All modules | End-to-end CLI (`cli.py`), chart generation | `script/cli.py`, `corruption_report.md` | Phạm Quốc Thanh |
 
 ---
 
@@ -173,5 +173,5 @@ uv run pytest tests/
 - [x] Đã verify chạy lại toàn bộ pipeline và bộ test suite 9/9 passed.
 - [x] Báo cáo không chứa bất kỳ API key, token hay secret nào.
 
-**Đại diện nhóm:** Phạm Quốc Thành — 2A202601407  
+**Đại diện nhóm:** Phạm Quốc Thanh — 2A202601407  
 **Ngày xác nhận:** 2026-08-06
